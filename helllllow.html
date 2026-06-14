@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ER Store</title>
+<meta property="og:title" content="ER Store - Lifetime Discord Roles" />
+<meta property="og:description" content="Buy lifetime Discord ranks, perks, and limited roles. One-time payment, instant access." />
+<meta property="og:image" content="https://imgtolinkx.com/i/is1iqNl4" />
+<meta property="og:url" content="https://notplayer-y.github.io/Elite_Realm/" />
+<meta name="theme-color" content="#7c5cfc" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #09090f; --bg2: #0f0f1a; --bg3: #13131f;
+    --surface: #16162a; --surface2: #1c1c32;
+    --border: rgba(120,100,255,0.15); --border2: rgba(120,100,255,0.3);
+    --text: #f0eeff; --muted: #7a7a9a;
+    --accent: #7c5cfc; --accent2: #a78bfa;
+    --gold: #f5c542; --rose: #f472b6; --cyan: #22d3ee;
+    --green: #34d399; --orange: #fb923c; --red: #f87171;
+    --paypal: #003087; --paypal2: #009cde;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(9,9,15,0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+  }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .cart-btn {
+    position: relative; background: var(--surface); border: 1px solid var(--border2);
+    color: var(--text); padding: 0.5rem 1.1rem; border-radius: 8px; font-size: 0.85rem;
+    font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px;
+    transition: all 0.2s; font-family: 'Space Grotesk', sans-serif;
+  }
+  .cart-btn:hover { background: var(--surface2); border-color: var(--accent); }
+  .cart-count {
+    position: absolute; top: -7px; right: -7px;
+    background: var(--accent); color: #fff; font-size: 0.65rem; font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    display: none;
+  }
+  .cart-count.show { display: flex; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; position: relative; overflow: hidden; padding: 8rem 2rem 6rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,92,252,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(34,211,238,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 20% 60%, rgba(244,114,182,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(120,100,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(120,100,255,0.05) 1px, transparent 1px);
+    background-size: 60px 60px; pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 0%, transparent 80%);
+  }
+  .hero-content { position: relative; max-width: 800px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124,92,252,0.12); border: 1px solid rgba(124,92,252,0.3); color: var(--accent2);
+    padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.8rem,7vw,5.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 40%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin: 0 auto 3rem; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #5b3fcf); color: #fff;
+    padding: 0.9rem 2.2rem; border-radius: 10px; font-size: 1rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.25s; box-shadow: 0 0 30px rgba(124,92,252,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(124,92,252,0.5); }
+  .btn-ghost { border: 1px solid var(--border2); color: var(--text); padding: 0.9rem 2.2rem; border-radius: 10px; font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 0.25s; }
+  .btn-ghost:hover { background: var(--surface); border-color: var(--accent); }
+  .hero-stats { display: flex; gap: 3rem; justify-content: center; margin-top: 5rem; flex-wrap: wrap; }
+  .stat { text-align: center; opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards; }
+  .stat:nth-child(1){animation-delay:0.6s} .stat:nth-child(2){animation-delay:0.75s} .stat:nth-child(3){animation-delay:0.9s}
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; display: block; }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s ease forwards; }
+  .hero-content .hero-badge{animation-delay:0.1s} .hero-content h1{animation-delay:0.25s} .hero-content p{animation-delay:0.4s} .hero-content .hero-btns{animation-delay:0.55s}
+
+  /* ── SECTION ── */
+  section { padding: 6rem 2rem; }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-eyebrow { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ── RANKS ── */
+  #ranks { background: var(--bg); }
+  .ranks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.25rem; }
+  .rank-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.75rem; position: relative; overflow: hidden; transition: all 0.3s ease;
+    cursor: pointer; opacity: 0; transform: translateY(30px);
+  }
+  .rank-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s; }
+  .rank-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 16px 16px 0 0; transition: opacity 0.3s; opacity: 0.7; }
+  .rank-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+  .rank-card:hover::before { opacity: 1; }
+  .rank-supporter::before{background:#60a5fa} .rank-vip::before{background:#a78bfa} .rank-mvp::before{background:#34d399}
+  .rank-elite::before{background:#f59e0b} .rank-legend::before{background:#f472b6} .rank-mythic::before{background:#818cf8}
+  .rank-titan::before{background:#f87171} .rank-immortal::before{background:linear-gradient(90deg,#f59e0b,#f87171,#a78bfa)}
+  .rank-card:hover.rank-supporter{box-shadow:0 8px 40px rgba(96,165,250,0.12)} .rank-card:hover.rank-vip{box-shadow:0 8px 40px rgba(167,139,250,0.12)}
+  .rank-card:hover.rank-mvp{box-shadow:0 8px 40px rgba(52,211,153,0.12)} .rank-card:hover.rank-elite{box-shadow:0 8px 40px rgba(245,158,11,0.12)}
+  .rank-card:hover.rank-legend{box-shadow:0 8px 40px rgba(244,114,182,0.12)} .rank-card:hover.rank-mythic{box-shadow:0 8px 40px rgba(129,140,248,0.12)}
+  .rank-card:hover.rank-titan{box-shadow:0 8px 40px rgba(248,113,113,0.12)} .rank-card:hover.rank-immortal{box-shadow:0 8px 40px rgba(245,158,11,0.2)}
+  .rank-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
+  .rank-icon { font-size: 2rem; line-height: 1; }
+  .rank-badge { font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .badge-popular{background:rgba(124,92,252,0.2);color:var(--accent2);border:1px solid rgba(124,92,252,0.3)}
+  .badge-best{background:rgba(245,197,66,0.15);color:#f5c542;border:1px solid rgba(245,197,66,0.3)}
+  .badge-top{background:rgba(248,113,113,0.15);color:#f87171;border:1px solid rgba(248,113,113,0.3)}
+  .rank-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .rank-price { font-size: 2rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; margin-bottom: 0.25rem; }
+  .rank-lifetime { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.25rem; }
+  .rank-divider { height: 1px; background: var(--border); margin-bottom: 1.25rem; }
+  .rank-perks { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .rank-perks li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; color: var(--muted); }
+  .rank-perks li::before {
+    content: ''; width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(52,211,153,0.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 5l2.5 2.5L8 3' stroke='%2334d399' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
+    border: 1px solid rgba(52,211,153,0.3);
+  }
+  .rank-card-btns { display: flex; gap: 8px; }
+  .btn-buy {
+    flex: 1; background: linear-gradient(135deg, var(--accent), #5b3fcf); color: #fff;
+    border: none; padding: 0.75rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: all 0.25s; font-family: 'Space Grotesk', sans-serif;
+  }
+  .btn-buy:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,92,252,0.35); }
+  .btn-cart {
+    background: var(--surface2); border: 1px solid var(--border2); color: var(--text);
+    padding: 0.75rem 0.9rem; border-radius: 10px; font-size: 1rem; cursor: pointer;
+    transition: all 0.25s; display: flex; align-items: center; justify-content: center;
+  }
+  .btn-cart:hover { background: rgba(124,92,252,0.15); border-color: var(--accent); }
+  .btn-cart.added { background: rgba(52,211,153,0.15); border-color: var(--green); color: var(--green); }
+  .rank-card.rank-immortal { background: linear-gradient(135deg, rgba(22,22,42,1), rgba(30,20,50,1)); border-color: rgba(245,158,11,0.3); }
+  .rank-immortal .rank-price { background: linear-gradient(135deg,#f59e0b,#f87171,#a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .rank-immortal .btn-buy { background: linear-gradient(135deg,#f59e0b,#f87171); }
+
+  /* ── ADDONS ── */
+  #addons { background: var(--bg2); }
+  .addons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  .addon-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; transition: all 0.3s; opacity: 0; transform: translateY(20px); display: flex; flex-direction: column; gap: 0.75rem; }
+  .addon-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, background 0.3s; }
+  .addon-card:hover { border-color: var(--border2); background: var(--surface2); }
+  .addon-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+  .addon-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; }
+  .addon-price { font-size: 1.5rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; color: var(--accent2); }
+  .addon-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .addon-btns { margin-top: auto; display: flex; gap: 8px; }
+  .addon-buy { flex: 1; background: transparent; border: 1px solid var(--border2); color: var(--text); padding: 0.6rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Space Grotesk', sans-serif; text-align: center; }
+  .addon-buy:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .addon-cart { background: var(--surface2); border: 1px solid var(--border2); color: var(--text); padding: 0.6rem 0.85rem; border-radius: 8px; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+  .addon-cart:hover { background: rgba(124,92,252,0.15); border-color: var(--accent); }
+  .addon-cart.added { background: rgba(52,211,153,0.15); border-color: var(--green); color: var(--green); }
+
+  /* ── LIMITED ── */
+  #limited { background: var(--bg); }
+  .limited-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .limited-card { background: var(--surface); border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; opacity: 0; transform: scale(0.96); }
+  .limited-card.visible { opacity: 1; transform: scale(1); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s; }
+  .limited-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; padding: 1px; background: linear-gradient(135deg, rgba(245,197,66,0.4), rgba(124,92,252,0.2)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+  .limited-card:hover { transform: translateY(-4px) scale(1.01); }
+  .limited-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(245,197,66,0.12); border: 1px solid rgba(245,197,66,0.3); color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .limited-tag::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .limited-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .limited-price { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; font-weight: 700; color: var(--gold); margin-bottom: 0.25rem; }
+  .limited-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
+  .limited-perks { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem; }
+  .limited-perks li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; color: var(--muted); }
+  .limited-perks li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; }
+  .limited-btns { display: flex; gap: 8px; }
+  .btn-limited { flex: 1; background: linear-gradient(135deg, rgba(245,197,66,0.9), rgba(251,146,60,0.9)); color: #1a1000; border: none; padding: 0.8rem; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.25s; font-family: 'Space Grotesk', sans-serif; }
+  .btn-limited:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(245,197,66,0.3); }
+  .btn-limited-cart { background: rgba(245,197,66,0.1); border: 1px solid rgba(245,197,66,0.3); color: var(--gold); padding: 0.8rem 1rem; border-radius: 10px; font-size: 1rem; cursor: pointer; transition: all 0.25s; }
+  .btn-limited-cart:hover { background: rgba(245,197,66,0.2); }
+  .btn-limited-cart.added { background: rgba(52,211,153,0.15); border-color: var(--green); color: var(--green); }
+
+  /* ── HOW ── */
+  #how { background: var(--bg2); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .step { text-align: center; padding: 2rem 1.5rem; opacity: 0; transform: translateY(20px); }
+  .step.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .step-num { width: 52px; height: 52px; border-radius: 14px; background: var(--surface2); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--accent2); margin: 0 auto 1.25rem; }
+  .step-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CART DRAWER ── */
+  .cart-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; width: 420px; max-width: 100vw;
+    background: var(--bg2); border-left: 1px solid var(--border2); z-index: 300;
+    display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 299; opacity: 0; pointer-events: none; transition: opacity 0.35s; }
+  .cart-backdrop.open { opacity: 1; pointer-events: all; }
+  .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .cart-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .cart-close-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .cart-close-btn:hover { border-color: var(--border2); color: var(--text); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .cart-items::-webkit-scrollbar { width: 4px; }
+  .cart-items::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+  .cart-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); gap: 1rem; padding: 3rem; text-align: center; }
+  .cart-empty-icon { font-size: 3rem; opacity: 0.4; }
+  .cart-empty p { font-size: 0.95rem; }
+  .cart-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; display: flex; align-items: center; gap: 0.9rem; }
+  .cart-item-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cart-item-sub { font-size: 0.75rem; color: var(--muted); }
+  .cart-item-price { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: var(--accent2); flex-shrink: 0; }
+  .cart-item-remove { background: transparent; border: none; color: var(--muted); font-size: 1rem; cursor: pointer; padding: 4px; border-radius: 4px; transition: color 0.2s; flex-shrink: 0; }
+  .cart-item-remove:hover { color: var(--red); }
+  .cart-footer { padding: 1.25rem; border-top: 1px solid var(--border); flex-shrink: 0; }
+  .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+  .cart-total-label { font-size: 0.9rem; color: var(--muted); }
+  .cart-total-amount { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--text); }
+  .btn-checkout {
+    width: 100%; background: #0070ba; color: #fff; border: none;
+    padding: 1rem; border-radius: 12px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif; transition: all 0.25s; letter-spacing: 0.01em;
+  }
+  .btn-checkout:hover { background: #003087; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(0,112,186,0.4); }
+  .btn-checkout:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .checkout-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+  .clear-cart-btn { width: 100%; background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 0.6rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; margin-top: 0.6rem; font-family: 'Inter', sans-serif; }
+  .clear-cart-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* ── CHECKOUT PAGE ── */
+  #checkout-page {
+    display: none; position: fixed; inset: 0; background: var(--bg); z-index: 500;
+    overflow-y: auto; padding: 2rem;
+  }
+  #checkout-page.open { display: block; }
+  .checkout-wrap { max-width: 680px; margin: 0 auto; padding: 3rem 0; }
+  .checkout-back { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 0.55rem 1.1rem; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 2rem; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+  .checkout-back:hover { border-color: var(--border2); color: var(--text); }
+  .checkout-title { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .checkout-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+  .checkout-section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; margin-bottom: 1.25rem; }
+  .checkout-section-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.8rem; }
+  .checkout-order-items { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .checkout-order-item { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .checkout-order-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .co-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .co-name { flex: 1; font-size: 0.9rem; font-weight: 500; }
+  .co-sub { font-size: 0.75rem; color: var(--muted); }
+  .co-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--accent2); }
+  .checkout-total-line { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .checkout-total-label { font-size: 0.9rem; color: var(--muted); font-weight: 500; }
+  .checkout-total-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; font-weight: 500; letter-spacing: 0.04em; }
+  .form-input {
+    width: 100%; background: var(--bg); border: 1px solid var(--border2); color: var(--text);
+    padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.95rem; outline: none;
+    transition: border-color 0.2s; font-family: 'Inter', sans-serif;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  .form-input::placeholder { color: var(--muted); }
+  .paypal-info-box {
+    background: rgba(0,112,186,0.08); border: 1px solid rgba(0,112,186,0.25);
+    border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .paypal-info-box .pp-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .paypal-info-text { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .paypal-info-text strong { color: var(--text); display: block; margin-bottom: 0.25rem; font-family: 'Space Grotesk', sans-serif; }
+  .btn-pay {
+    width: 100%; background: linear-gradient(135deg, #0070ba, #003087); color: #fff;
+    border: none; padding: 1.1rem; border-radius: 12px; font-size: 1.1rem; font-weight: 700;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;
+    font-family: 'Space Grotesk', sans-serif; transition: all 0.25s; margin-top: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+  .btn-pay:hover { background: linear-gradient(135deg, #005ea6, #002a6e); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,112,186,0.45); }
+  .paypal-logo-text { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+  .paypal-logo-text span:first-child { color: #009cde; }
+  .paypal-logo-text span:last-child { color: #012169; filter: brightness(3); }
+  .pay-notice { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.85rem; line-height: 1.6; }
+  .checkout-steps-bar { display: flex; gap: 0; margin-bottom: 2.5rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .cs-step { flex: 1; padding: 0.6rem; text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--muted); background: var(--surface); border-right: 1px solid var(--border); letter-spacing: 0.04em; text-transform: uppercase; }
+  .cs-step:last-child { border-right: none; }
+  .cs-step.active { background: rgba(124,92,252,0.15); color: var(--accent2); }
+
+  /* ── CTA ── */
+  #cta { background: var(--bg); text-align: center; padding: 8rem 2rem; }
+  .cta-box { max-width: 680px; margin: 0 auto; background: var(--surface); border-radius: 24px; padding: 4rem 3rem; position: relative; overflow: hidden; border: 1px solid rgba(124,92,252,0.2); }
+  .cta-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(124,92,252,0.12), transparent 70%); pointer-events: none; }
+  .cta-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; position: relative; }
+  .cta-box p { color: var(--muted); margin-bottom: 2.5rem; position: relative; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; }
+  .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; background: linear-gradient(135deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
+  .footer-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent2); }
+
+  /* ── TOAST ── */
+  .toast-container { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 400; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; pointer-events: none; }
+  .toast { background: var(--surface); border: 1px solid var(--border2); color: var(--text); padding: 0.7rem 1.4rem; border-radius: 999px; font-size: 0.875rem; font-weight: 500; display: flex; align-items: center; gap: 8px; animation: toastIn 0.3s ease, toastOut 0.3s ease 2.2s forwards; white-space: nowrap; }
+  .toast.success { border-color: rgba(52,211,153,0.4); }
+  .toast-icon { font-size: 1rem; }
+  @keyframes toastIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes toastOut { to { opacity:0; transform: translateY(10px); } }
+
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: float 8s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-30px) scale(1.05)} }
+
+  @media(max-width:768px) { .nav-links{display:none} .hero h1{font-size:2.4rem} .cta-box{padding:2.5rem 1.5rem} .cta-box h2{font-size:1.8rem} section{padding:4rem 1.25rem} .cart-drawer{width:100vw} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://imgtolinkx.com/i/is1iqNl4" width="26">
+    ER Store
+  </a>
+  <ul class="nav-links">
+    <li><a href="#ranks">Ranks</a></li>
+    <li><a href="#addons">Add-ons</a></li>
+    <li><a href="#limited">Limited</a></li>
+    <li><a href="#how">How It Works</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" id="cartBtn">
+      🛒 Cart
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="orb" style="width:500px;height:500px;top:-100px;left:-100px;background:rgba(124,92,252,0.07);animation-delay:0s"></div>
+    <div class="orb" style="width:400px;height:400px;bottom:-80px;right:-80px;background:rgba(34,211,238,0.05);animation-delay:3s"></div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <span class="hero-badge">Lifetime Roles · One-Time Payment</span>
+    <h1>Unlock Your<br><span>Discord Status</span></h1>
+    <p>Exclusive lifetime roles, perks, and privileges. Purchase once, keep forever. Add to cart and pay instantly via PayPal.</p>
+    <div class="hero-btns">
+      <a href="#ranks" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Browse Roles
+      </a>
+      <a href="#how" class="btn-ghost">How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">2,400+</span><span class="stat-label">Members</span></div>
+      <div class="stat"><span class="stat-num">8</span><span class="stat-label">Rank Tiers</span></div>
+      <div class="stat"><span class="stat-num">Lifetime</span><span class="stat-label">Access</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RANKS -->
+<section id="ranks">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Rank Tiers</span>
+      <h2 class="section-title">Choose Your Rank</h2>
+      <p class="section-sub">Every rank is a lifetime purchase. Add to cart, pay once via PayPal, keep it forever.</p>
+    </div>
+    <div class="ranks-grid" id="ranksGrid"></div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section id="addons">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Customization</span>
+      <h2 class="section-title">Add-On Perks</h2>
+      <p class="section-sub">Personalize your role beyond the tiers. Mix and match to create your unique look.</p>
+    </div>
+    <div class="addons-grid" id="addonsGrid"></div>
+  </div>
+</section>
+
+<!-- LIMITED -->
+<section id="limited">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Exclusive</span>
+      <h2 class="section-title">Limited Edition Roles</h2>
+      <p class="section-sub">Once they're gone, they're gone. These roles close permanently when slots fill.</p>
+    </div>
+    <div class="limited-grid" id="limitedGrid"></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Process</span>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">Get your role in minutes.</p>
+    </div>
+    <div class="steps" id="stepsGrid">
+      <div class="step"><div class="step-num">1</div><h3 class="step-title">Pick Your Role</h3><p class="step-desc">Browse the tiers and add what you want to your cart.</p></div>
+      <div class="step"><div class="step-num">2</div><h3 class="step-title">Go to Checkout</h3><p class="step-desc">Review your cart, enter your Discord username, and proceed.</p></div>
+      <div class="step"><div class="step-num">3</div><h3 class="step-title">Pay via PayPal</h3><p class="step-desc">One-time secure payment. No subscriptions, no recurring fees.</p></div>
+      <div class="step"><div class="step-num">4</div><h3 class="step-title">Enjoy Forever</h3><p class="step-desc">Your role is assigned and yours for life.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-box">
+    <h2>Ready to Level Up?</h2>
+    <p>Add your roles to cart and checkout in seconds. Lifetime access, zero renewals.</p>
+    <a href="#ranks" class="btn-primary" style="display:inline-flex">Browse Roles →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🔷 ER Store</div>
+  <p class="footer-sub">Lifetime Discord roles · PayPal payments · Instant delivery</p>
+  <div class="footer-links">
+    <a href="#">Terms of Service</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Contact</a>
+    <a href="#">Discord</a>
+  </div>
+</footer>
+
+<!-- CART BACKDROP -->
+<div class="cart-backdrop" id="cartBackdrop"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">🛒 Your Cart <span id="cartItemCount" style="font-size:0.8rem;color:var(--muted);font-weight:400"></span></div>
+    <button class="cart-close-btn" id="cartCloseBtn">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cartTotal">$0.00</span>
+    </div>
+    <button class="btn-checkout" id="checkoutBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      Proceed to Checkout
+    </button>
+    <p class="checkout-note">Secure payment via PayPal · Lifetime access guaranteed</p>
+    <button class="clear-cart-btn" id="clearCartBtn">🗑 Clear cart</button>
+  </div>
+</div>
+
+<!-- CHECKOUT PAGE -->
+<div id="checkout-page">
+  <div class="checkout-wrap">
+    <button class="checkout-back" id="checkoutBackBtn">← Back to store</button>
+    <div class="checkout-steps-bar">
+      <div class="cs-step active">1 · Review</div>
+      <div class="cs-step active">2 · Details</div>
+      <div class="cs-step active">3 · Pay</div>
+    </div>
+    <h1 class="checkout-title">Checkout</h1>
+    <p class="checkout-sub">Review your order and complete your purchase via PayPal.</p>
+
+    <!-- Order Summary -->
+    <div class="checkout-section">
+      <div class="checkout-section-title">Order Summary</div>
+      <div class="checkout-order-items" id="checkoutOrderItems"></div>
+      <div class="checkout-total-line">
+        <span class="checkout-total-label">Total Due</span>
+        <span class="checkout-total-val" id="checkoutTotalVal"></span>
+      </div>
+    </div>
+
+    <!-- Discord Info -->
+    <div class="checkout-section">
+      <div class="checkout-section-title">Your Info</div>
+      <div class="form-group">
+        <label class="form-label">Discord Username</label>
+        <input class="form-input" id="discordUser" type="text" placeholder="e.g. yourname or yourname#0001">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Discord Server Nickname (optional)</label>
+        <input class="form-input" id="discordNick" type="text" placeholder="Your nickname in our server">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email (for confirmation)</label>
+        <input class="form-input" id="buyerEmail" type="email" placeholder="you@email.com">
+      </div>
+    </div>
+
+    <!-- PayPal -->
+    <div class="checkout-section">
+      <div class="checkout-section-title">Payment</div>
+      <div class="paypal-info-box">
+        <div class="pp-icon">💡</div>
+        <div class="paypal-info-text">
+          <strong>How payment works</strong>
+          Clicking the button below will open PayPal so you can send the exact amount to our PayPal. In the payment note, include your Discord username and the role(s) you purchased. Your role will be assigned within 24 hours after payment is confirmed.
+        </div>
+      </div>
+      <button class="btn-pay" id="paypalBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Pay with
+        <span class="paypal-logo-text"><span>Pay</span><span>Pal</span></span>
+      </button>
+      <p class="pay-notice">⚠️ After payment, send a screenshot of your PayPal receipt to our Discord server so we can assign your role quickly. Roles are assigned within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ── DATA ──
+const ranks = [
+  { id:'supporter', name:'Supporter', price:1.99, icon:'🔵', cls:'rank-supporter', perks:['Supporter role in server','Access to #supporter-chat','Special chat color (blue)'], badge:null },
+  { id:'vip', name:'VIP', price:4.99, icon:'💜', cls:'rank-vip', perks:['Everything in Supporter','VIP role badge','Exclusive #vip-chat access','Enhanced chat color'], badge:null },
+  { id:'mvp', name:'MVP', price:9.99, icon:'💚', cls:'rank-mvp', perks:['Everything in VIP','50+ exclusive emojis','Priority support queue','MVP role badge'], badge:{text:'Popular',cls:'badge-popular'} },
+  { id:'elite', name:'Elite', price:14.99, icon:'⭐', cls:'rank-elite', perks:['Everything in MVP','Elite-only giveaways','Exclusive Elite voice channel','Elite badge'], badge:null },
+  { id:'legend', name:'Legend', price:19.99, icon:'🌟', cls:'rank-legend', perks:['Everything in Elite','Early server announcements','Special animated profile badge','Legend title'], badge:null },
+  { id:'mythic', name:'Mythic', price:29.99, icon:'🔮', cls:'rank-mythic', perks:['Everything in Legend','Access to testing servers','Mythic animated chat badge','Closed beta access'], badge:{text:'Best Value',cls:'badge-best'} },
+  { id:'titan', name:'Titan', price:39.99, icon:'⚡', cls:'rank-titan', perks:['Everything in Mythic','Name in Hall of Fame','Exclusive seasonal events','Titan glow badge'], badge:null },
+  { id:'immortal', name:'Immortal', price:49.99, icon:'👑', cls:'rank-immortal', perks:['Everything in Titan','Highest donor status','Permanent recognition board','Unique animated role icon','Immortal badge (ultra-rare)'], badge:{text:'Top Tier',cls:'badge-top'} }
+];
+const addons = [
+  { id:'custom-color', name:'Custom Color', price:2.99, icon:'🎨', bg:'rgba(244,114,182,0.12)', desc:'Choose any hex color for your role. Stand out in chat and member list.' },
+  { id:'custom-name', name:'Custom Role Name', price:4.99, icon:'✏️', bg:'rgba(34,211,238,0.12)', desc:'Set a completely custom name for your role throughout the server.' },
+  { id:'custom-both', name:'Custom Role + Color', price:6.99, icon:'✨', bg:'rgba(167,139,250,0.12)', desc:'Custom name and color combined. Total personalization, best value.' }
+];
+const limited = [
+  { id:'founder', name:'Founder Supporter', price:9.99, emoji:'🏛️', note:'Limited slots — closes permanently when full', perks:['Exclusive Founder badge (never re-released)','Permanent "Founder" title in server','Priority access to all future features','Direct line to server staff','Recognition in server history'] },
+  { id:'og', name:'OG Member', price:7.99, emoji:'🌀', note:'Limited edition — closes forever when sold out', perks:['OG Member badge (permanently limited)','Legacy chat access','Original member recognition','Unique OG prefix in server','Exclusive OG events'] },
+  { id:'beta', name:'Beta Tester', price:4.99, emoji:'🧪', note:'Reserved for early testing program supporters', perks:['Beta Tester badge','Access to test channels','Early feature previews','Bug bounty eligibility','Beta Tester role in Hall of Fame'] }
+];
+
+// ── CART STATE ──
+let cart = [];
+
+function getTotal() {
+  return cart.reduce((s,i) => s + i.price, 0);
+}
+
+function fmt(n) { return '$' + n.toFixed(2); }
+
+// ── TOAST ──
+function showToast(msg, icon='✅') {
+  const tc = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast success';
+  t.innerHTML = `<span class="toast-icon">${icon}</span>${msg}`;
+  tc.appendChild(t);
+  setTimeout(() => t.remove(), 2600);
+}
+
+// ── CART RENDER ──
+function renderCart() {
+  const itemsEl = document.getElementById('cartItems');
+  const countEl = document.getElementById('cartCount');
+  const countLabelEl = document.getElementById('cartItemCount');
+  const footerEl = document.getElementById('cartFooter');
+  const totalEl = document.getElementById('cartTotal');
+
+  const n = cart.length;
+  countEl.textContent = n;
+  countEl.classList.toggle('show', n > 0);
+  countLabelEl.textContent = n > 0 ? `(${n} item${n>1?'s':''})` : '';
+
+  if (n === 0) {
+    itemsEl.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>Your cart is empty.<br>Add some roles to get started!</p></div>`;
+    footerEl.style.display = 'none';
+    return;
+  }
+
+  footerEl.style.display = 'block';
+  totalEl.textContent = fmt(getTotal());
+
+  itemsEl.innerHTML = '';
+  cart.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <div class="cart-item-icon">${item.icon||item.emoji||'🎖️'}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-sub">Lifetime · One-time</div>
+      </div>
+      <div class="cart-item-price">${fmt(item.price)}</div>
+      <button class="cart-item-remove" data-idx="${idx}" title="Remove">✕</button>
+    `;
+    itemsEl.appendChild(div);
+  });
+
+  itemsEl.querySelectorAll('.cart-item-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.idx);
+      const removed = cart.splice(idx, 1)[0];
+      renderCart();
+      updateCartBtns();
+      showToast(`${removed.name} removed from cart`, '🗑');
+    });
+  });
+}
+
+function updateCartBtns() {
+  const inCart = new Set(cart.map(i => i.id));
+  document.querySelectorAll('[data-cart-id]').forEach(btn => {
+    const id = btn.dataset.cartId;
+    if (inCart.has(id)) {
+      btn.textContent = '✓';
+      btn.classList.add('added');
+    } else {
+      btn.textContent = '🛒';
+      btn.classList.remove('added');
+    }
+  });
+}
+
+function addToCart(item) {
+  if (cart.find(c => c.id === item.id)) {
+    showToast(`${item.name} is already in your cart`, 'ℹ️');
+    return;
+  }
+  cart.push({...item});
+  renderCart();
+  updateCartBtns();
+  openCart();
+  showToast(`${item.name} added to cart!`);
+}
+
+// ── CART OPEN/CLOSE ──
+function openCart() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartBackdrop').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartBackdrop').classList.remove('open');
+}
+
+document.getElementById('cartBtn').addEventListener('click', openCart);
+document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+document.getElementById('cartBackdrop').addEventListener('click', closeCart);
+document.getElementById('clearCartBtn').addEventListener('click', () => {
+  cart = [];
+  renderCart();
+  updateCartBtns();
+  showToast('Cart cleared', '🗑');
+});
+
+// ── CHECKOUT ──
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  if (cart.length === 0) return;
+  closeCart();
+  openCheckout();
+});
+
+function openCheckout() {
+  const page = document.getElementById('checkout-page');
+  page.classList.add('open');
+  page.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+
+  // populate order items
+  const itemsEl = document.getElementById('checkoutOrderItems');
+  itemsEl.innerHTML = '';
+  cart.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'checkout-order-item';
+    div.innerHTML = `
+      <div class="co-icon">${item.icon||item.emoji||'🎖️'}</div>
+      <div class="co-info" style="flex:1">
+        <div class="co-name">${item.name}</div>
+        <div class="co-sub">Lifetime · One-time payment</div>
+      </div>
+      <div class="co-price">${fmt(item.price)}</div>
+    `;
+    itemsEl.appendChild(div);
+  });
+  document.getElementById('checkoutTotalVal').textContent = fmt(getTotal());
+}
+
+function closeCheckout() {
+  document.getElementById('checkout-page').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('checkoutBackBtn').addEventListener('click', () => {
+  closeCheckout();
+  openCart();
+});
+
+// ── PAYPAL BUTTON ──
+document.getElementById('paypalBtn').addEventListener('click', () => {
+  const discord = document.getElementById('discordUser').value.trim();
+  if (!discord) {
+    document.getElementById('discordUser').focus();
+    showToast('Please enter your Discord username first', '⚠️');
+    return;
+  }
+  const total = getTotal();
+  const itemNames = cart.map(i => i.name).join(', ');
+  const note = encodeURIComponent(`ER Store purchase — Roles: ${itemNames} — Discord: ${discord}`);
+
+  // ── REPLACE WITH YOUR PAYPAL.ME LINK ──
+  // Example: https://www.paypal.me/YourPayPalUsername/AMOUNT
+  const paypalURL = `https://www.paypal.me/NotPlayer512/${total.toFixed(2)}`;
+  // ─────────────────────────────────────
+
+  window.open(paypalURL, '_blank');
+  showToast('Redirecting to PayPal...', '💳');
+});
+
+// ── RENDER RANKS ──
+const ranksGrid = document.getElementById('ranksGrid');
+ranks.forEach((r, i) => {
+  const perksHTML = r.perks.map(p=>`<li>${p}</li>`).join('');
+  const badgeHTML = r.badge ? `<span class="rank-badge ${r.badge.cls}">${r.badge.text}</span>` : '';
+  const card = document.createElement('div');
+  card.className = `rank-card ${r.cls}`;
+  card.style.transitionDelay = `${i * 0.07}s`;
+  card.innerHTML = `
+    <div class="rank-header">
+      <div class="rank-icon">${r.icon}</div>
+      ${badgeHTML}
+    </div>
+    <div class="rank-name">${r.name}</div>
+    <div class="rank-price">${fmt(r.price)}</div>
+    <div class="rank-lifetime">Lifetime Access</div>
+    <div class="rank-divider"></div>
+    <ul class="rank-perks">${perksHTML}</ul>
+    <div class="rank-card-btns">
+      <button class="btn-buy">Get ${r.name}</button>
+      <button class="btn-cart" data-cart-id="${r.id}" title="Add to cart">🛒</button>
+    </div>
+  `;
+  card.querySelector('.btn-buy').addEventListener('click', () => addToCart(r));
+  card.querySelector('.btn-cart').addEventListener('click', () => addToCart(r));
+  ranksGrid.appendChild(card);
+});
+
+// ── RENDER ADDONS ──
+const addonsGrid = document.getElementById('addonsGrid');
+addons.forEach((a, i) => {
+  const card = document.createElement('div');
+  card.className = 'addon-card';
+  card.style.transitionDelay = `${i * 0.1}s`;
+  card.innerHTML = `
+    <div class="addon-icon" style="background:${a.bg}">${a.icon}</div>
+    <div class="addon-name">${a.name}</div>
+    <div class="addon-price">${fmt(a.price)}</div>
+    <div class="addon-desc">${a.desc}</div>
+    <div class="addon-btns">
+      <button class="addon-buy">Add to Cart</button>
+      <button class="addon-cart" data-cart-id="${a.id}" title="Add to cart">🛒</button>
+    </div>
+  `;
+  card.querySelector('.addon-buy').addEventListener('click', () => addToCart(a));
+  card.querySelector('.addon-cart').addEventListener('click', () => addToCart(a));
+  addonsGrid.appendChild(card);
+});
+
+// ── RENDER LIMITED ──
+const limitedGrid = document.getElementById('limitedGrid');
+limited.forEach((l, i) => {
+  const perksHTML = l.perks.map(p=>`<li>${p}</li>`).join('');
+  const card = document.createElement('div');
+  card.className = 'limited-card';
+  card.style.transitionDelay = `${i * 0.12}s`;
+  card.innerHTML = `
+    <div class="limited-tag">Limited Edition</div>
+    <div style="font-size:2.5rem;margin-bottom:0.75rem">${l.emoji}</div>
+    <div class="limited-name">${l.name}</div>
+    <div class="limited-price">${fmt(l.price)}</div>
+    <div class="limited-label">${l.note}</div>
+    <ul class="limited-perks">${perksHTML}</ul>
+    <div class="limited-btns">
+      <button class="btn-limited">Add to Cart</button>
+      <button class="btn-limited-cart" data-cart-id="${l.id}" title="Add to cart">🛒</button>
+    </div>
+  `;
+  card.querySelector('.btn-limited').addEventListener('click', () => addToCart(l));
+  card.querySelector('.btn-limited-cart').addEventListener('click', () => addToCart(l));
+  limitedGrid.appendChild(card);
+});
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+setTimeout(() => {
+  document.querySelectorAll('.rank-card, .addon-card, .limited-card, .step').forEach(el => observer.observe(el));
+}, 100);
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background = window.scrollY > 40 ? 'rgba(9,9,15,0.95)' : 'rgba(9,9,15,0.85)';
+});
+window.addEventListener('scroll', () => {
+  const heroGrid = document.querySelector('.hero-grid');
+  if (heroGrid && window.scrollY < window.innerHeight) heroGrid.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+});
+
+// init
+renderCart();
+</script>
+</body>
+</html>
